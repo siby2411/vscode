@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>AJAX et jQuery</title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+</head>
+
+<body>
+    <h1>Tapez les 3 premières lettres de votre ville</h1>
+    <input type="text" id="ville" name="ville">
+    <p id="texte"></p>
+    <script>
+        $("#ville").keyup(function () {
+            let saisie = $(this).val();
+            if (saisie.length >= 3) {
+                $.ajax({
+                    url: "communes.php?saisie=" + saisie,
+                    method: "GET",
+                    success: function (data) {
+                        $("#texte").html(data);
+                    }
+                });
+            }
+        }); 
+    </script>
+</body>
+
+</html>

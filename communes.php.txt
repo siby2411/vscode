@@ -1,0 +1,11 @@
+  
+
+<?php
+$mysqli = new mysqli("localhost", "root", "", "ajax");
+$requete = "SELECT ville_nom FROM communes WHERE ville_nom LIKE '" . $_GET["saisie"] . "%' ";
+$resultat = $mysqli->query($requete);
+while ($ligne = $resultat->fetch_assoc()) {
+    echo $ligne['ville_nom'] . "<br>";
+}
+
+?>
